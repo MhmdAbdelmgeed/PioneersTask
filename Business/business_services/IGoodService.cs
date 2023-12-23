@@ -1,8 +1,7 @@
-﻿using Shared.ServiceRegister;
-using Shared;
+﻿using DataModel;
 using DtoModel;
-using DataModel;
 using GenericRepository;
+using Shared.ServiceRegister;
 
 namespace Business.business_services
 {

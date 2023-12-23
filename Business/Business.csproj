@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="prometheus-net" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
     <ProjectReference Include="..\DtoModel\DtoModel.csproj" />
     <ProjectReference Include="..\EntityFramework\EntityFramework.csproj" />

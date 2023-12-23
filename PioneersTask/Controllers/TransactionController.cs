@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Business.business_services;
-using Business.business_services_implementations;
 using DtoModel;
 using GenericRepository;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Shared;
@@ -148,7 +146,7 @@ namespace PioneersTask.Controllers
         {
             try
             {
-                OperationResult result =_TransactionService.Remove(Id);
+                OperationResult result = _TransactionService.Remove(Id);
 
                 return Ok(result);
             }

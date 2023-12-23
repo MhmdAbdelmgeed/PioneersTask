@@ -3,7 +3,6 @@ using Business.business_services;
 using DtoModel;
 using GenericRepository;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Shared;
@@ -58,7 +57,7 @@ namespace PioneersTask.Controllers
             }
         }
 
-   
+
         [Route("GetGood/{id}")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]

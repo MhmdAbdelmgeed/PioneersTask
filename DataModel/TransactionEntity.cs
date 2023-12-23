@@ -1,6 +1,6 @@
 ﻿namespace DataModel
 {
-    public class TransactionEntity:BaseModel
+    public class TransactionEntity : BaseModel
     {
         public int Id { get; set; }
         public DateTime TransactionDate { get; set; }

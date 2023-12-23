@@ -87,25 +87,25 @@ namespace Business.business_services_implementations
 
                 //with linq
                 List<TransactionDTO> TransactionDtoList = (from transactions in _context.Transactions
-                                             orderby transactions.LastModificationTime descending
-                                             select new TransactionDTO
-                                             {
-                                                 Id = transactions.Id,
-                                                 Status = transactions.Status,
-                                                 Amount = transactions.Amount,
-                                                 Comments = transactions.Comments,
-                                                 Direction = transactions.Direction,
-                                                 TransactionDate = transactions.TransactionDate,
-                                                 Goods=( from good in _context.Goods
-                                                         where good.TransactionEntityId==transactions.Id
-                                                         select new GoodDTO
-                                                         {
-                                                             Id= good.Id,
-                                                             Descrition = good.Descrition,
-                                                             Status = good.Status,
-                                                             TransactionEntityId = transactions.Id,
-                                                         }).ToList()
-                                             }).ToList();
+                                                           orderby transactions.LastModificationTime descending
+                                                           select new TransactionDTO
+                                                           {
+                                                               Id = transactions.Id,
+                                                               Status = transactions.Status,
+                                                               Amount = transactions.Amount,
+                                                               Comments = transactions.Comments,
+                                                               Direction = transactions.Direction,
+                                                               TransactionDate = transactions.TransactionDate,
+                                                               Goods = (from good in _context.Goods
+                                                                        where good.TransactionEntityId == transactions.Id
+                                                                        select new GoodDTO
+                                                                        {
+                                                                            Id = good.Id,
+                                                                            Descrition = good.Descrition,
+                                                                            Status = good.Status,
+                                                                            TransactionEntityId = transactions.Id,
+                                                                        }).ToList()
+                                                           }).ToList();
                 _cache.SetData(_cacheKey, TransactionDtoList, DateTimeOffset.UtcNow.AddDays(1));
                 return (List<TransactionDTO>)TransactionDtoList;
             }
@@ -122,7 +122,7 @@ namespace Business.business_services_implementations
 
             var refDataDtoList = GetAll().ToList();
 
-            refDataDtoList = refDataDtoList.Where(x =>(!filter.Status.HasValue || x.Status == filter.Status.Value)
+            refDataDtoList = refDataDtoList.Where(x => (!filter.Status.HasValue || x.Status == filter.Status.Value)
                                                     && (!filter.Amount.HasValue || x.Amount == filter.Amount.Value)
                                                     && (TransactionStatuslist == null || TransactionStatuslist.Count == 0 || TransactionStatuslist.Contains(x.Status))
                                                     && (string.IsNullOrEmpty(filter.Direction) || x.Direction.ToLower().Trim().Contains(filter.Direction.ToLower().Trim()))

@@ -1,6 +1,6 @@
 ﻿namespace DataModel
 {
-    public class GoodEnitty:BaseModel
+    public class GoodEnitty : BaseModel
     {
         public int Id { get; set; }
         public string? Descrition { get; set; }
